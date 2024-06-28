@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="editor">
+        <div class="svg-container" id="line-container">
+            <svg id="line-svg" width="300" height="300">
+                <line id="line-element" x1="50" y1="50" x2="250" y2="250" stroke="black" stroke-width="2"/>
+                <circle id="line-handle1" cx="50" cy="50" r="5" fill="red"/>
+                <circle id="line-handle2" cx="250" cy="250" r="5" fill="red"/>
+            </svg>
+        </div>
+        <div class="svg-container" id="polyline-container">
+            <svg id="polyline-svg" width="300" height="300">
+                <polyline id="polyline-element" points="50,50 250,50 250,250 50,250" stroke="black" stroke-width="2" fill="none"/>
+                <circle class="polyline-handle" cx="50" cy="50" r="5" fill="red"/>
+                <circle class="polyline-handle" cx="250" cy="50" r="5" fill="red"/>
+                <circle class="polyline-handle" cx="250" cy="250" r="5" fill="red"/>
+                <circle class="polyline-handle" cx="50" cy="250" r="5" fill="red"/>
+            </svg>
+            <button id="add-polyline-handle">Add Handle</button>
+        </div>
+        <div class="svg-container" id="curve-container">
+            <svg id="curve-svg" width="300" height="300">
+                <path id="curve-element" d="M 50 50 C 100 100, 200 100, 250 50" stroke="black" stroke-width="2" fill="none"/>
+                <circle class="curve-handle" cx="50" cy="50" r="5" fill="red"/>
+                <circle class="curve-handle" cx="100" cy="100" r="5" fill="red"/>
+                <circle class="curve-handle" cx="200" cy="100" r="5" fill="red"/>
+                <circle class="curve-handle" cx="250" cy="50" r="5" fill="red"/>
+          
+                <!-- <circle class="curve-handle" cx="300" cy="50" r="5" fill="red"/> -->
+            </svg>
+            <button id="add-curve-handle">Add Handle</button>
+        </div>
+    </div>
+    <div id="panel">
+        <h3>SVG Properties</h3>
+        <form id="svg-properties">
+            <!-- 공통 속성 -->
+            <label for="stroke">Stroke Color:</label>
+            <input type="color" id="stroke" name="stroke"><br>
+            <label for="strokeWidth">Stroke Width:</label>
+            <input type="number" id="strokeWidth" name="strokeWidth"><br>
+            <!-- 개별 속성 -->
+            <div id="line-properties">
+                <label for="x1">X1:</label>
+                <input type="number" id="x1" name="x1"><br>
+                <label for="y1">Y1:</label>
+                <input type="number" id="y1" name="y1"><br>
+                <label for="x2">X2:</label>
+                <input type="number" id="x2" name="x2"><br>
+                <label for="y2">Y2:</label>
+                <input type="number" id="y2" name="y2"><br>
+            </div>
+            <div id="polyline-properties" style="display: none;">
+                <label for="points">Points:</label>
+                <input type="text" id="points" name="points"><br>
+            </div>
+            <div id="curve-properties" style="display: none;">
+                <label for="path">Path:</label>
+                <input type="text" id="path" name="path"><br>
+            </div>
+            <button type="button" id="apply-btn">Apply</button>
+        </form>
+    </div>
+    <button id="save-btn">Save</button>
+
+    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
